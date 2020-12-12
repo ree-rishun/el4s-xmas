@@ -24,10 +24,15 @@ const routes = [
     path: "/gacha_result",
     component: GachaResult
   },
-  {
+  {// グループ作成
     path: "/create",
     name: 'create',
     component: () => import('../pages/CreateRoom')
+  },
+  {// グループのリンク表示
+    path: "/create/result",
+    name: 'createResult',
+    component: () => import('../pages/CreateResult')
   }
 ];
 
