@@ -1,6 +1,6 @@
 <template>
   <div>
-    RegisterResult
+    ご登録ありがとうございました。
   </div>
 </template>
 
