@@ -1,6 +1,6 @@
 <template>
   <div>
-    GachaResult
+    <label></label>
   </div>
 </template>
 
