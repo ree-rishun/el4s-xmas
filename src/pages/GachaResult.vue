@@ -7,21 +7,25 @@
     </template>
     <template v-if="resultState === 1">
       <div>
-        <p>ガチャ結果</p>
-        <div>{{$route.query.url}}</div>
+        <div>ガチャ結果</div>
+        <div>{{title}}</div>
+        <img :src="ogp" />
       </div>
     </template>
   </div>
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
   name: 'GachaResult',
   props: {},
   data() {
     return {
       // 0: ガチャGIF, 1: 結果
-      resultState: 0
+      resultState: 0,
+      title: "title",
+      ogp: "https://m.media-amazon.com/images/I/415RMEh6CDL._AC_SR320,320_.jpg"
     }
   },
   methods: {
@@ -31,7 +35,13 @@ export default {
     }
   },
   mounted: function () {
-    this.showResult();
+    const self = this;
+    self.showResult();
+    Axios.post("", {
+      url: this.$route.query.url,
+    }).then(response => {
+      console.log(response)
+    })
   }
 }
 </script>
