@@ -33,11 +33,11 @@ export default {
         snapshot.forEach((doc) => {
           results.push(doc.data());
         });
-        const resultItemId = results.filter(d => d.id !== this.selectedId)[Math.floor(Math.random() * results.length)].roomId
+        const resultItemId = results.filter(d => d.id !== this.selectedId)[Math.floor(Math.random() * results.length)]
         this.$router.push({
           name: 'gachaResult',
           query: {
-            resultItemId: resultItemId
+            url: resultItemId.url
           }
         });
       });

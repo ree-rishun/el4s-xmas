@@ -8,6 +8,7 @@
     <template v-if="resultState === 1">
       <div>
         <p>ガチャ結果</p>
+        <div>{{$route.query.url}}</div>
       </div>
     </template>
   </div>
