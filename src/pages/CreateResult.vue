@@ -5,7 +5,9 @@
         type="text"
         v-model="groupLink"
         readonly>
+    </label>
 
+    <label>
       <button
         @click="$router.push('/group/' + groupID)">
         開く

@@ -1,6 +1,6 @@
 <template>
   <div>
-    ご登録ありがとうございました。
+    登録が完了しました。
   </div>
 </template>
 
