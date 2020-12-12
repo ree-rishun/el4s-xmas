@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <label></label>
+  <div>GachaResult
   </div>
 </template>
 
