@@ -1,5 +1,6 @@
 <template>
-  <div>GachaResult
+  <div>
+    GachaResult
   </div>
 </template>
 
@@ -13,7 +14,6 @@ export default {
   methods: {
 
   },
-
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="hoge">
-      <select v-model="selected">
+      <select v-model="selectedId">
         <option v-for="option in options" v-bind:value="option.id" :key="option.id">
           {{ option.name }}
         </option>
@@ -14,26 +14,53 @@
 </template>
 
 <script>
+import {db} from "../firebase"
 export default {
   name: 'Gacha',
   props: {},
   data() {
     return {
-      selected: '1',
-      options: [
-        // @todo: サーバーから取得
-        { name: '名前1', id: '1' },
-        { name: '名前2', id: '2' },
-        { name: '名前3', id: '3' }
-      ]
+      selectedId: '',
+      options: []
     }
   },
   methods: {
     doGacha: function() {
-      // @todo: ここでサーバーに送信
-      alert('hoge');  
+      const itemsRef = db.collection("items").where("roomId", "==", this.$route.params.roomId);
+      let results = []
+      // 自分以外のitemを一見取得
+      itemsRef.get().then((snapshot) => {
+        snapshot.forEach((doc) => {
+          results.push(doc.data());
+        });
+        const resultItemId = results.filter(d => d.id !== this.selectedId)[Math.floor(Math.random() * results.length)].roomId
+        this.$router.push({
+          name: 'gachaResult',
+          query: {
+            resultItemId: resultItemId
+          }
+        });
+      });
     }
   },
+  async mounted() {
+    const self = this;
+    try {
+      const itemsRef = db.collection("items").where("roomId", "==", self.$route.params.roomId);
+      await itemsRef.get().then((snapshot) => {
+        const data = []
+        snapshot.forEach((doc) => {
+          data.push({...doc.data(), id: doc.id});
+        });
+        self.options = data
+        if (data.length > 0) {
+          self.selectedId = data[0].id
+        }
+      });
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 </script>
 

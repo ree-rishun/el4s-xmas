@@ -9,31 +9,34 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/register",
+    path: "/room/:roomId/register",
     component: Register,
   },
   {
-    path: "/register_result",
+    path: "/room/:roomId/register_result",
     component: RegisterResult,
   },
   {
-    path: "/gacha",
+    path: "/room/:roomId/gacha",
     component: Gacha,
   },
   {
-    path: "/gacha_result",
+    name: "gachaResult",
+    path: "/room/:roomId/gacha_result",
     component: GachaResult,
   },
-  {// グループ作成
-    path: "/create",
-    name: 'create',
-    component: () => import('../pages/CreateRoom')
+  {
+    // グループ作成
+    path: "/room/:roomId/create",
+    name: "create",
+    component: () => import("../pages/CreateRoom"),
   },
-  {// グループのリンク表示
-    path: "/create/result",
-    name: 'createResult',
-    component: () => import('../pages/CreateResult')
-  }
+  {
+    // グループのリンク表示
+    path: "/room/:roomId/create/result",
+    name: "createResult",
+    component: () => import("../pages/CreateResult"),
+  },
 ];
 
 const router = new VueRouter({
