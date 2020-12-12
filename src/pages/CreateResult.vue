@@ -9,7 +9,7 @@
 
     <label>
       <button
-        @click="$router.push('/group/' + groupID)">
+        @click="$router.push('/room/' + groupID)">
         開く
       </button>
     </label>
