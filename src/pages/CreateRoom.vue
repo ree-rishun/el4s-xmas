@@ -11,6 +11,7 @@
       <span>人数</span>
       <input
         type="number"
+        min="2"
         v-model="group.menber">
     </label>
     <label>
@@ -37,7 +38,7 @@
       return {
         group: {
           name: '',
-          menber: 0,
+          menber: 2,
           password: ''
         }
       }
