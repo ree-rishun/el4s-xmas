@@ -1,20 +1,25 @@
 <template>
   <div>
-    <label>
-      <span>氏名</span>
-      <input v-model="name" />
-    </label>
-    <label>
-      <span>URL</span>
-      <input v-model="url" />
-    </label>
-    <button v-on:click="submit">登録</button>
+    <div>
+      <label>
+        <span>氏名</span>
+        <input v-model="name" />
+      </label>
+    </div>
+    <div>
+      <label>
+        <span>URL</span>
+        <input v-model="url" />
+      </label>
+    </div>
+    <div>
+      <button v-on:click="submit">登録</button>
+    </div>
   </div>
 </template>
 
 <script>
 import {db} from "../firebase"
-console.log(db)
 export default {
   name: 'Register',
   props: {},
@@ -25,11 +30,19 @@ export default {
     }
   },
   methods: {
-    submit() {
-      console.log("submit")
+    async submit() {
+      try {
+        const itemsRef = db.collection("items");
+        await itemsRef.add({
+          name: this.name,
+          url: this.url,
+        })
+        this.$router.push("/register_result")
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
-
 }
 </script>
 

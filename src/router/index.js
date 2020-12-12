@@ -1,40 +1,40 @@
-import Vue from "vue"
+import Vue from "vue";
 import VueRouter from "vue-router";
 import Register from "../pages/Register.vue";
 import RegisterResult from "../pages/RegisterResult.vue";
 import Gacha from "../pages/Gacha.vue";
 import GachaResult from "../pages/GachaResult.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/register",
-    component: Register
+    component: Register,
   },
   {
     path: "/register_result",
-    component: RegisterResult
+    component: RegisterResult,
   },
   {
     path: "/gacha",
-    component: Gacha
+    component: Gacha,
   },
   {
     path: "/gacha_result",
-    component: GachaResult
+    component: GachaResult,
   },
   {
     path: "/create",
-    name: 'create',
-    component: () => import('../pages/CreateRoom')
-  }
+    name: "create",
+    component: () => import("../pages/CreateRoom"),
+  },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
